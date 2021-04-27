@@ -1,27 +1,52 @@
+<div class="fixed-footer">
+<div class="container" style="text-align:center; margin-bottom: ">Copyright &copy; 2021Your Company
+</div>        
+ </div>
+</body>
+
+
+
+
 <?php
 if(isset($_REQUEST['error_msg'])){
   echo '<p style="text-align:center;">'.$_REQUEST['error_msg'].'</p>';
 }
 ?>
-<div class="fixed-footer">
-        <div class="container" style="text-align:center;">Copyright &copy; 2021Your Company</div>        
-    </div>
-    </body>
     <script>
         
         $(document).ready(function(){
-  $('.dropdown-submenu a.test').on("click", function(e){
-    $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
-  });
-}); 
-        $(function(){
+          
+          $('#image_profile_data').show();
+          
+          $('body').find("#image_profile").change();
+
+          $('body').find("#image_profile").change(function(){
+              $('#image_profile_data').show();
+              readURL(this);
+          });
+
+          $('.dropdown-submenu a.test').on("click", function(e){
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+          });
+
           $('input[type="text"]').keyup(function(){
              this.value = $.trim(this.value);
-             });
+          });
         });
 
+          function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#image_profile_data').find('img').attr('src', e.target.result);
+                  }
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
 
          function Check(evt)
            {

@@ -98,6 +98,11 @@ class database
   function update($post_data, $file_data)
       
       {
+
+      // echo '<pre>';
+      // print_r($post_data);
+      // print_r($file_data);
+      // die();
       $conn = $this->connect();
 
       $firstname=$post_data['firstname'];
@@ -120,7 +125,7 @@ class database
       $city = $_POST['city'];
       $password = $post_data['password'];
 
-      $qry= "UPDATE form set firstname='$firstname',lastname='$lastname',email='$email',phone='$phone',image='$orgname',gender='$gender',country='$country',state='$state',city='$city',password='$password' WHERE email='$email'";
+      $qry= "UPDATE form set firstname='$firstname',lastname='$lastname',email='$email',phone='$phone', image='$orgname',gender='$gender',country='$country',state='$state',city='$city',password='$password' WHERE email='$email'";
      
 
 
@@ -146,21 +151,22 @@ class database
 
     function insertproduct($post_data, $file_data)
       { 
-      /*echo '<pre>';
-      print_r($_FILES);
-      echo '</pre>';*/
       $conn = $this->connect();
-      $name = $post_data['title'];
+    
+      $name = $post_data['name'];
 
       $orgname=$file_data['image']['name'];
       $tempname=$file_data['image']['tmp_name'];
       $path = "images/".$orgname;
       move_uploaded_file($tempname, $path);
-
-      $description = $post_data['description'];
-
-      $qry = "INSERT INTO product VALUES('$name','$orgname','$description')";
-   
+      $price = $_POST['price'];
+      $brand = $post_data['brandid'];
+      $category = $post_data['id'];
+      $qry = "INSERT INTO product (name,image,RS,bid,id) VALUES ('$name','$orgname','$price','$brand','$category')";
+      // echo '<pre>';
+      // print_r($qry);
+      // echo '</pre>';
+      // die();
       mysqli_query($conn,$qry) or die("error in query" . mysqli_error($conn));
       $count=mysqli_affected_rows($conn);
       mysqli_close($conn);
@@ -173,8 +179,63 @@ class database
       }      
   
 
+}  
+
+function insertbrand($post_data, $file_data)
+      { 
+      $conn = $this->connect();
+    
+      $name = $post_data['brand_name'];
+
+      $orgname=$file_data['image']['name'];
+      $tempname=$file_data['image']['tmp_name'];
+      $path = "images/".$orgname;
+      move_uploaded_file($tempname, $path);
+
+      
+
+      $qry = "INSERT INTO brand (brand_name,image) VALUES ('$name','$orgname')";
+      // echo '<pre>';
+      // print_r($qry);
+      // echo '</pre>';
+      // die();
+      mysqli_query($conn,$qry) or die("error in query" . mysqli_error($conn));
+      $count=mysqli_affected_rows($conn);
+      mysqli_close($conn);
+
+      if($count==1)
+      {
+        return array('status' => 1, 'msg' => "data added successfully");
+      }else{  
+      return array('status' => 0, 'msg' => "data not added successfully"); 
+      }      
+  
 }   
 
+function insertcategory($post_data, $file_data)
+      { 
+      $conn = $this->connect();
+    
+      $category = $post_data['category'];
 
+      
+
+      $qry = "INSERT INTO categories (category) VALUES ('$category')";
+      // echo '<pre>';
+      // print_r($qry);
+      // echo '</pre>';
+      // die();
+      mysqli_query($conn,$qry) or die("error in query" . mysqli_error($conn));
+      $count=mysqli_affected_rows($conn);
+      mysqli_close($conn);
+
+      if($count==1)
+      {
+        return array('status' => 1, 'msg' => "data added successfully");
+      }else{  
+      return array('status' => 0, 'msg' => "data not added successfully"); 
+      }      
+  
+}    
 }
 ?>

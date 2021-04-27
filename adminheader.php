@@ -14,6 +14,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="jquery.min.js"></script>
+<!--     <link rel="stylesheet" href="css/bootstrap.css"/> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" 
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" 
+        crossorigin="anonymous"></script> -->
    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
@@ -41,7 +49,35 @@ if ($_SESSION['email'] && $_SESSION['usertype']==user){ ?>
           </a>
 
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="showbrand.php">skin-care</a>
+          <li>
+            <?php
+      error_reporting(0);
+      $connect = mysqli_connect("localhost", "root", "redhat", "student");
+      $id = $_GET['id'];
+      $query = "SELECT * FROM categories WHERE id= 2";
+      $result = mysqli_query($connect, $query);
+      if (mysqli_num_rows($result) > 0)
+      {
+          while ($row = mysqli_fetch_assoc($result))
+          {
+      ?>
+        <form method="post" action="">
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li>
+      <a  class="dropdown-item" href="showbrand.php?id=<?php echo $row["id"]; ?>"><i >SkinCare</i></a>
+           </li>
+         </ul>
+       </form>
+         </ul>
+          </div>
+        </div>    
+        </form>
+        
+              <?php
+          }
+      }
+      ?>
+            <a class="dropdown-item" href="showbrand.php">skin-care</a>
              <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li class="dropdown-submenu"><a  class="dropdown-item dropdown-toggle" href="#">brands</a>
               <li class="dropdown-submenu"><a class="dropdown-submenu" href="#">moisturizer</a></li>
@@ -91,16 +127,68 @@ if ($_SESSION['email'] && $_SESSION['usertype']==user){ ?>
             <a class="nav-link" href="home.php">Home</a>
           </li>
 
-          <li class="nav-item active">
-            <a class="nav-link" href="">categories<span class="sr-only">(current)</span></a>
-          </li>
+                 <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">categories
+          </a>
+
+                <?php
+      error_reporting(0);
+      $connect = mysqli_connect("localhost", "root", "redhat", "student");
+      $id = $_GET['id'];
+      print_r($id);
+      die(); 
+      $query = "SELECT * FROM categories ORDER BY id ASC";
+      $result = mysqli_query($connect, $query);
+
+      $result = mysqli_fetch_assoc($result);
+      echo '<pre>';
+      print_r($result);
+      echo '</pre>';
+      die();
+
+      if (mysqli_num_rows($result) > 0)
+      {
+          while ($row = mysqli_fetch_assoc($result))
+          {
+      ?>
+        <form method="post" action="">
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li>
+      <a  class="dropdown-item" href="showbrand.php?id=<?php echo $row["id"]; ?>"></a>
+           </li>
+         </ul>
+          </div>
+        </div>    
+        </form>
+        
+              <?php
+          }
+      }
+      ?>
+            
+             <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li class="dropdown-submenu"><a  class="dropdown-item dropdown-toggle" href="#">brands</a>
+              <li class="dropdown-submenu"><a class="dropdown-submenu" href="#">moisturizer</a></li>
+              <li class="dropdown-submenu"><a class="dropdown-submenu" href="#">sunscreen</a></li>
+              <li class="dropdown-submenu"><a class="dropdown-submenu" href="#">face-oil</a></li>-->
+         
+
+<!--           <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">electronics</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">computer</a></li>
+                <li><a class="dropdown-item" href="#">mobiles</a></li>
+            </ul>
+          </li> -->
+        </ul>
+       </li>
+
             
           <li class="nav-item active">
-            <a class="nav-link" href="addproduct.php">add products<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="insertform.php">add products<span class="sr-only">(current)</span></a>
           </li>
           
           <li class="nav-item active">
-            <a class="nav-link" href="insertform.php">add brand</a>
+            <a class="nav-link" href="insertbrand.php">add brand</a>
           </li>
           
           <li class="nav-item active">

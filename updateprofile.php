@@ -6,8 +6,7 @@ session_start();
 
    include ("helper.php") ;
   	$obj = new database();
-    $email = $_SESSION['email'] 
-    ;
+    $email = $_SESSION['email'];
     if(isset($_POST['update']))
     {
         $obj->update($_POST, $_FILES);

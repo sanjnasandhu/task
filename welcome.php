@@ -12,3 +12,6 @@ else
 	header('location:loginpage.php');
 }
 ?>
+<?php
+include('footer.php');
+?>

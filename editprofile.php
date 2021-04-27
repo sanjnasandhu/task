@@ -1,7 +1,10 @@
  <?php
-	include ("header.php");
+	include ("adminheader.php");
 	include ("selectdata.php");
-	
+	// echo '<pre>';
+	// print_r($data);
+	// echo '</pre>';
+	// die();
  ?>
 
 
@@ -37,16 +40,16 @@
 	       <div class="form-group">	
 	    	<label>gender</label><br>
 		     <label class="form-check form-check-inline">
-		      <input  type="radio" class="form-check-input" <?php if($data['gender']=="Male"){ echo "checked";} ?> value="Male"  name="gender" >
+		      <input  type="radio" class="form-check-input" <?php if($data['gender']=="male"){ echo "checked";} ?> value="Male"  name="gender" >
 		      <span class="form-check-label"> Male </span>
 		     </label>
 		     <label class="form-check form-check-inline">
-		      <input type="radio" class="form-check-input" <?php if($data['gender']=="Female"){ echo "checked";} ?>  name="gender" value="Female">
+		      <input type="radio" class="form-check-input" <?php if($data['gender']=="female"){ echo "checked";} ?>  name="gender" value="Female">
 		      <span class="form-check-label"> Female</span>
 		     </label>
 		     
 		     <label class="form-check form-check-inline">
-		      <input class="form-check-input" type="radio" <?php if($data['gender']=="Others"){ echo "checked";} ?>  name="gender" value="Others" >
+		      <input class="form-check-input" type="radio" <?php if($data['gender']=="others"){ echo "checked";} ?>  name="gender" value="Others" >
 		      <span class="form-check-label"> Others</span>
 	          </label>	      
            
@@ -67,9 +70,13 @@
 		    </div>
 		   </div> 
 
-	        <div class="form-group">
-		     <label>Image</label>
-		      <input type="file" name="image" class="form-control" value ="<?php echo $data['image'];?>" placeholder="" required="">
+		   
+	      <div class="form-group">
+		  <label>Image</label>   
+	      <div id="image_profile_data" style="display: none;">
+		      	<img src="./images/<?php echo $data['image'];?>" height="100px" width="150px">
+		      	<input type="file" name="image" id="image_profile" class="form-control" value ="" placeholder="">
+		      </div>
 	        </div>
 
 	        <div class="form-group">

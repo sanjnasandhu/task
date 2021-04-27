@@ -94,21 +94,17 @@ body{
     font-weight: 600;
     color: #0062cc;
 }
-.container{
-        width: 80%;
-        margin: 0 auto; /* Center the DIV horizontally */
- }
- .fixed-header, .fixed-footer{
+
+.fixed-footer{
+        position: fixed;
         width: 100%;
-        position: bottom;       
+        text-align:center;  
         background: #333;
         padding: 10px 0;
-        margin-left: 50px;
         color: #fff;
+        margin-bottom: 1px;
     }
-    .fixed-header{
-        top: 0;
-    }
+   
     .fixed-footer{
         bottom: 1;
     }
@@ -130,17 +126,31 @@ body{
   margin-left: .1rem;
   margin-right: .1rem;
 }
+.brand
+{
+   border:3px solid #5cb85c;
+  background-color:whitesmoke; 
+  border-radius:1px; 
+  margin-top:4px;
+  height: 170px;
+  width: 250px;
+  float:left;
+margin-bottom:15px; 
+  margin-left: 60px;
+ padding:6px;
+ text-align:center;
+}
 .boxsize{
  border:3px solid #5cb85c;
   background-color:whitesmoke; 
-  border-radius:5px; 
-  margin-top:10px;
-  height: 150px;
-  width: 210px;
- float: left;
-  margin-left: 50px;
+  border-radius:1px; 
+  margin-top:15px;
+  height: 35 0px;
+  width: 300px;
+  float:left;
+  margin-left: 80px;
  padding:16px;
-   align:center;
+ text-align:center;
 }
 .get-in-touch {
   max-width: 800px;
