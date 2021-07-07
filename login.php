@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,16 +66,19 @@
 .input-group-addon .fa{
     font-size: 18px;
 }
-</style>
+</style> 
 </head>
 <body>
 <div class="login-form">
     <form action="/examples/actions/confirmation.php" method="post">
-        <h2 class="text-center">Sign in</h2>		
-        <div class="text-center social-btn">
-            <a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+        <h2 class="text-center">Sign in</h2>
+
+
+<div class="text-center social-btn">
+            <a href="fb.php" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>';
+        
             <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>
-			<a href="#" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+			<a href="#"  class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
         </div>
 		<div class="or-seperator"><i>or</i></div>
         <div class="form-group">
